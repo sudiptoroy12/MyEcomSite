@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Product from "@/models/Product";
 import mongoose from "mongoose";
 import Error from 'next/error'
+import { baseUrl } from "@/middleware/baseUrl";
 
 const Slug = ({addToCart,buyNow,products,variants,error}) => {
 
@@ -20,7 +21,7 @@ const Slug = ({addToCart,buyNow,products,variants,error}) => {
   },[router.query])
 
   const refreshVariants=(newcolor,newsize)=>{
-    let url= `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newcolor][newsize]['slug']}`
+    let url= (baseUrl+`/product/${variants[newcolor][newsize]['slug']}`)
     router.push(url)
 
   }

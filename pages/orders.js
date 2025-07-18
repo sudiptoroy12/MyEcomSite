@@ -1,13 +1,14 @@
 import { React, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { baseUrl } from "@/middleware/baseUrl";
 
 const Orders = () => {
   const router = useRouter();
   const [orders , setOrders]= useState([])
   useEffect(() => {
     const fetchToken =async()=>{
-      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
+      const res = await fetch(baseUrl+"/api/myorders", {
         method: "POST",
        
         headers: {

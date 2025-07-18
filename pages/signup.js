@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {useRouter} from "next/router";
+import { baseUrl } from "@/middleware/baseUrl";
 
 
 
@@ -39,7 +40,7 @@ const handleChange=(e)=>{
 const handleSubmit= async (e)=>{
   e.preventDefault()
   const data = {name,email,password}
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+  const res = await fetch(baseUrl+"/api/signup", {
     method: "POST",
    
     headers: {

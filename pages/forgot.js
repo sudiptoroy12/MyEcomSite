@@ -1,6 +1,7 @@
 import React, { useEffect,useState} from "react";
 import Link from 'next/link'
 import {useRouter} from "next/router";
+import { baseUrl } from "@/middleware/baseUrl";
 
 const Forgot = () => {
     const router = useRouter()
@@ -18,7 +19,7 @@ const Forgot = () => {
 
       const sendemail=async()=>{
         const data = {email,token,sendMail:true}
-        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/forgot`, {
+        const res = await fetch(baseUrl+"/api/forgot", {
           method: "POST",
          
           headers: {
@@ -38,7 +39,7 @@ const Forgot = () => {
 
         if(npassword === cpassword){
              const data = {npassword,sendMail:false}
-        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/forgot`, {
+        const res = await fetch(baseUrl+"/api/forgot", {
           method: "POST",
          
           headers: {

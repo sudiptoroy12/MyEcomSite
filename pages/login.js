@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useRouter} from "next/router";
+import { baseUrl } from "@/middleware/baseUrl";
 
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
     const handleSubmit= async (e)=>{
       e.preventDefault()
       const data = {email,password}
-      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+      const res = await fetch(baseUrl+"/api/login", {
         method: "POST",
        
         headers: {
@@ -58,7 +59,7 @@ const Login = () => {
        
         });
         setTimeout(() => {
-             router.push(`${process.env.NEXT_PUBLIC_HOST}`)
+             router.push(baseUrl)
         },1200);
        
     }

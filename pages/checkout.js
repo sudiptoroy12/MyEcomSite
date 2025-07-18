@@ -5,6 +5,7 @@ import { useEffect} from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { baseUrl } from "@/middleware/baseUrl";
 
 const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
   const router = useRouter()
@@ -41,7 +42,7 @@ fetchdata(user.token)
      
     const data = {token:token}
     
-    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+    const res = await fetch(baseUrl+"/api/getuser", {
       method: "POST",
      
       headers: {
@@ -89,7 +90,7 @@ fetchdata(user.token)
   const initiatePayment= async ()=>{
    let oid = Math.floor(Math.random() * Date.now())
     const data = {cart,subTotal,oid , name,email,address , phone,district,thana,gender}
-    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+    const res = await fetch(baseUrl+"/api/pretransaction", {
       method: "POST",
      
       headers: {

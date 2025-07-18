@@ -2,6 +2,7 @@ import {React,useEffect, useState} from 'react'
 import {useRouter} from "next/router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { baseUrl } from '@/middleware/baseUrl';
 
 const myaccount = () => {
   const [name, setName] = useState("");
@@ -36,7 +37,7 @@ fetchdata(myuser.token)
      
       const data = {token:token}
       
-      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+      const res = await fetch(baseUrl+"/api/getuser", {
         method: "POST",
        
         headers: {
@@ -58,7 +59,7 @@ fetchdata(myuser.token)
     const handleSubmit=async()=>{
      
       const data = {token:user.token,name, address, district, thana, phone,gender}
-      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateuser`, {
+      const res = await fetch(baseUrl+"/api/updateuser", {
         method: "POST",
        
         headers: {
@@ -84,7 +85,7 @@ fetchdata(myuser.token)
       let response;
      if(npassword==cpassword){ 
       const data = {token:user.token,password,npassword,cpassword}
-      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updatepassword`, {
+      const res = await fetch(baseUrl+"/api/updatepassword", {
         method: "POST",
        
         headers: {

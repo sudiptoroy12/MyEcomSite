@@ -32,11 +32,11 @@ export default function App({ Component, pageProps }) {
      console.error(error) 
      localStorage.clear();
     }
-    const myuser =JSON.parse(localStorage.getItem("myuser")) 
-    if(myuser){
-      setUser({value:myuser.token, email:myuser.email })
-      setKey(Math.random)
-    }
+    // const myuser =JSON.parse(localStorage.getItem("myuser")) 
+    // if(myuser){
+    //   setUser({value:myuser.token, email:myuser.email })
+    //   setKey(Math.random)
+    // }
     
    
 
